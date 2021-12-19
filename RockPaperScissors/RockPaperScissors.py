@@ -5,16 +5,17 @@ import random
 RoundsLeft = int(input('How many rounds will be played?: \n'))
 
 Choices = ['rock', 'paper', 'scissors']
-
+#While loop to run program until user quits.
 while True:
 
     ComputersPoints = 0
 
     PlayersPoints = 0
 
-
+    #While loop to run program til there are no rounds left.
     while RoundsLeft > 0:
-            RoundsInvert = RoundsLeft - 1
+            RoundsInvert = RoundsLeft - 1 #Used instead of having RoundsLeft - (RoundsLeft - 1) ->
+                                          #to make for more readable code.
 
             print(f'---------Round Number: {RoundsLeft - RoundsInvert}---------\n')
 
@@ -24,7 +25,7 @@ while True:
             randNum = random.randint(0,2)
             ComputersPick = Choices[randNum]
 
-
+            #Running actual program:
             if PlayersPick in Choices:
                 #First iteration for Scissors
                 if PlayersPick == 'rock' and ComputersPick == 'scissors':
@@ -78,7 +79,7 @@ while True:
 
     PlayAgain = input('Do you wish to play again? (Y/N)\n').lower()
 
-
+    #Rerun program?
     if PlayAgain == 'y':
         continue
     elif PlayAgain == 'n': 
