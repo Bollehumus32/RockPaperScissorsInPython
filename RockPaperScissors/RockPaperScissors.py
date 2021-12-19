@@ -3,6 +3,7 @@ import random
 #Program for playing Rock Paper Scissors, with a custom number of rounds!
 
 RoundsLeft = int(input('How many rounds will be played?: \n'))
+RoundNRCopy = RoundsLeft
 
 Choices = ['rock', 'paper', 'scissors']
 #While loop to run program until user quits.
@@ -14,10 +15,12 @@ while True:
 
     #While loop to run program til there are no rounds left.
     while RoundsLeft > 0:
-            RoundsInvert = RoundsLeft - 1 #Used instead of having RoundsLeft - (RoundsLeft - 1) ->
+            print(RoundNRCopy)
+            RoundsInvert = RoundsLeft - 1 #Used instead of having RoundNRCopy - (RoundsLeft - 1) ->
                                           #to make for more readable code.
+            Round = RoundNRCopy - RoundsInvert
 
-            print(f'---------Round Number: {RoundsLeft - RoundsInvert}---------\n')
+            print(f'---------Round Number: {Round} ---------\n')
 
             PlayersPick = input('What do you wish to pick(rock, paper, scissors):\n').lower()
 
@@ -66,8 +69,8 @@ while True:
                 print('Invalid Input\n')
                 #Done
 
-    print(f'Players Score: {PlayersPoints}!\n')
-    print(f'Computers Score: {ComputersPoints}!\n')
+    print(f'Players Score: {PlayersPoints}\n')
+    print(f'Computers Score: {ComputersPoints}\n')
 
     #Winner Deciding:
     if PlayersPoints > ComputersPoints:
