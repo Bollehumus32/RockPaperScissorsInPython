@@ -4,67 +4,89 @@ import random
 
 RoundsLeft = int(input('How many rounds will be played?: \n'))
 
-Choices = ['Rock', 'Paper', 'Scissors']
+Choices = ['rock', 'paper', 'scissors']
 
-ComputersPoints = 0
+while True:
 
-PlayersPoints = 0
+    ComputersPoints = 0
 
-while RoundsLeft > 0:
-    PlayersPick = input('What do you wish to pick(Rock, Paper, Scissors):\n')
-
-    #Running random int to decide computers pick for Rock (0), Paper(1) or Scissors(2)
-    randNum = random.randint(0,2)
-    ComputersPick = Choices[randNum]
+    PlayersPoints = 0
 
 
-    if PlayersPick in Choices:
-        #First iteration for Scissors
-        if PlayersPick == 'Rock' and ComputersPick == 'Scissors':
-            print('Player Wins!')
-            PlayersPoints += 1
-        if PlayersPick == 'Paper' and ComputersPick == 'Scissors':
-            print('Computer Wins!')
-            ComputersPoints += 1
-        if PlayersPick == 'Scissors' and ComputersPick == 'Scissors':
-            print('Tie!')
-            continue
+    while RoundsLeft > 0:
+            RoundsInvert = RoundsLeft - 1
 
-        #Second iteration for Paper
-        if PlayersPick == 'Rock' and ComputersPick == 'Paper':
-            print('Computer Wins!')
-            ComputersPoints += 1
-        if PlayersPick == 'Paper' and ComputersPick == 'Paper':
-            print('Tie!')
-            continue
-        if PlayersPick == 'Scissors' and ComputersPick == 'Paper':
-            print('Player Wins!')
-            PlayersPoints += 1
+            print(f'---------Round Number: {RoundsLeft - RoundsInvert}---------\n')
 
-        #Third iteration for Rock
-        if PlayersPick == 'Rock' and ComputersPick == 'Rock':
-            print('Tie!')
-            continue
-        if PlayersPick == 'Paper' and ComputersPick == 'Rock':
-            print('Player Wins!')
-            PlayersPoints += 1
-        if PlayersPick == 'Scissors' and ComputersPick == 'Rock':
-            print('Computer Wins!')
-            ComputersPoints += 1
-    RoundsLeft -= 1
-        #Done
+            PlayersPick = input('What do you wish to pick(rock, paper, scissors):\n').lower()
 
+            #Running random int to decide computers pick for Rock (0), Paper(1) or Scissors(2)
+            randNum = random.randint(0,2)
+            ComputersPick = Choices[randNum]
+
+
+            if PlayersPick in Choices:
+                #First iteration for Scissors
+                if PlayersPick == 'rock' and ComputersPick == 'scissors':
+                    print('Player Wins!\n')
+                    PlayersPoints += 1
+                if PlayersPick == 'paper' and ComputersPick == 'scissors':
+                    print('Computer Wins!\n')
+                    ComputersPoints += 1
+                if PlayersPick == 'scissors' and ComputersPick == 'scissors':
+                    print('Tie!\n')
+                    pass
+
+                #Second iteration for Paper
+                if PlayersPick == 'rock' and ComputersPick == 'paper':
+                    print('Computer Wins!\n')
+                    ComputersPoints += 1
+                if PlayersPick == 'paper' and ComputersPick == 'paper':
+                    print('Tie!\n')
+                    pass
+                if PlayersPick == 'scissors' and ComputersPick == 'paper':
+                    print('Player Wins!\n')
+                    PlayersPoints += 1
+
+                #Third iteration for Rock
+                if PlayersPick == 'rock' and ComputersPick == 'rock':
+                    print('Tie!\n')
+                    pass
+                if PlayersPick == 'paper' and ComputersPick == 'rock':
+                    print('Player Wins!\n')
+                    PlayersPoints += 1
+                if PlayersPick == 'scissors' and ComputersPick == 'rock':
+                    print('Computer Wins!\n')
+                    ComputersPoints += 1
+
+            RoundsLeft -= 1
+
+            if PlayersPick not in Choices: 
+                print('Invalid Input\n')
+                #Done
+
+    print(f'Players Score: {PlayersPoints}!\n')
+    print(f'Computers Score: {ComputersPoints}!\n')
+
+    #Winner Deciding:
+    if PlayersPoints > ComputersPoints:
+        print('The Player Wins!')
+    elif PlayersPoints == ComputersPoints:
+        print("It's a Tie!")
     else:
+        print('The Computer Wins!')
+
+    PlayAgain = input('Do you wish to play again? (Y/N)\n').lower()
+
+
+    if PlayAgain == 'y':
+        continue
+    elif PlayAgain == 'n': 
+        break
+    else: 
         print('Invalid Input')
-
-print(f'Players Score: {PlayersPoints}!')
-print(f'Computers Score: {ComputersPoints}!')
-
-#Winner Deciding:
-if PlayersPoints > ComputersPoints:
-    print('The Player Wins!')
-else:
-    print('The Computer Wins!')
+        break
+    
 
 
 
